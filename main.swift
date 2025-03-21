@@ -9,9 +9,7 @@ import Foundation
 
 // Main code
 func main() {
-    let random = Int.random(in: 0...Int.max)
-    let scanner = Scanner()
-    
+   
     let taskAssigner = TaskAssigner()
     
 //    print("Do you wanna load up the task list? 1 - yes, 0 - no")
@@ -27,7 +25,7 @@ func main() {
 //    }
     
     var choice: Int? = -1
-    //var inputChoice: Int? = -1
+    
     repeat {
         // Display menu
         print("\nMenu:")
@@ -105,8 +103,12 @@ func main() {
             let newTask = Task(name: taskName, importance: importance, difficulty: difficulty, interest: interest)
             let weight = taskAssigner.calculateWeight(newTask)
             newTask.setWeight(weight)
-            taskAssigner.addTask(newTask)
-            print("Task '\(taskName)' added successfully!")
+            if taskAssigner.addTask(newTask) {
+                print("Task '\(taskName)' added successfully!")
+            }else {
+                print("Task '\(taskName)' could not be added, idk why xD")
+            }
+            
             
         case 2:
             print("List of tasks:")
