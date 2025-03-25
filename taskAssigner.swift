@@ -40,8 +40,11 @@ class TaskAssigner {
         return false
     }
 
-    func deleteTask(_ task: Task) {
-        tasks.removeAll { $0 === task }
+    func deleteTask(withName taskName: String) -> Bool {
+        let intiialCount = tasks.count
+        tasks.removeAll { $0.getName() == taskName }
+        return tasks.count < intiialCount
+        
     }
 
     func getTasks() -> [Task] {
