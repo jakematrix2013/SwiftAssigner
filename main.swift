@@ -34,6 +34,7 @@ func main() {
         print("2. List tasks")
         print("3. Choose a random task")
         print("4. Choose a task based on its weight")
+        print("5. Delete a task")
         print("Enter your choice: ")
         
         if let inputChoice = readLine(), let inputChoice = Int(inputChoice), inputChoice < 5 && inputChoice >= 0 {
@@ -133,6 +134,31 @@ func main() {
                 if let chosenTask = taskAssigner.chooseWeightedTask() {
                     print("Algorithmically chosen task: \(chosenTask.getName())")
                 }
+            }
+            
+        case 5:
+            let tasks = taskAssigner.getTasks()
+            if tasks.isEmpty {
+                print("You want to delete nothing ? xD")
+            } else {
+                
+                print("Tasks left to do:")
+                for task in taskAssigner.getTasks() {
+                    print("\(task.getName())")
+                }
+                print("What is the name of the task you want to delete?")
+                if let chosenTask = readLine() {
+                    let deleted = taskAssigner.deleteTask(withName: chosenTask)
+                    if deleted {
+                        print("Task deleted successfully.")
+                    }else {
+                        print("No task found with that name m8")
+                    }
+                    
+                }else {
+                    print("well you gotta input something m8.. try again")
+                }
+                
             }
             
         default:
