@@ -37,7 +37,7 @@ func main() {
         print("5. Delete a task")
         print("Enter your choice: ")
         
-        if let inputChoice = readLine(), let inputChoice = Int(inputChoice), inputChoice < 5 && inputChoice >= 0 {
+        if let inputChoice = readLine(), let inputChoice = Int(inputChoice), inputChoice < 6 && inputChoice >= 0 {
             choice = inputChoice
         }else{
             print("Error: Invalid input.")
